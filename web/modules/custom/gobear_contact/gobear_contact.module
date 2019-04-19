@@ -1,0 +1,72 @@
+<?php
+
+/**
+ * @file
+ * Contains gobear_contact.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function gobear_contact_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the gobear_contact module.
+    case 'help.page.gobear_contact':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('My Awesome Module') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function gobear_contact_theme() {
+  return [
+    'gobear_contact' => [
+      'render element' => 'children',
+    ],
+  ];
+
+  /**
+ *  Form constructor for the example form.
+ */
+function gobear_contact_form($form, &$form_state) {
+  // Provide a text field.
+  $form['first_name'] = array(
+    '#title' => t('First name'),
+    '#type' => 'textfield',
+    '#required' => TRUE,
+  );
+  $form['last_name'] = array(
+    '#title' => t('Last name'),
+    '#type' => 'textfield',
+    '#required' => TRUE,
+  );
+  $form['email'] = array(
+    '#title' => t('Email address'),
+    '#type' => 'textfield',
+    '#required' => TRUE,
+  );
+  $form['gender '] = array(
+    '#type' => 'select',
+    '#title' => 'Gender',
+    '#default_value' => ['Male' => 'Male '], 
+    '#options' => ['Male' => 'Male ', 'Female' => 'Female'],
+  );
+  dd($form);
+  // Provide a submit button.
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'submit',
+  );
+  
+  return $form;
+}
+
+}
