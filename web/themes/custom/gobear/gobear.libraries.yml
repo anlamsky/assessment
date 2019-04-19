@@ -1,7 +1,8 @@
 framework:
   css:
     theme:
-      stylesheets/style.css: {}
+      stylesheets/custom.css: {weight: 2}
+      stylesheets/style.css: {weight: 1}      
   js:
     bootstrap/assets/javascripts/bootstrap/affix.js: {}
     bootstrap/assets/javascripts/bootstrap/alert.js: {}
